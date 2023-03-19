@@ -1,0 +1,43 @@
+#START
+'
+#PARAM
+AQ1,-1;'	inclinomètre Uy
+AQ3,-1;'	inclinomètre Ux
+AQ5,-1;'	gyromètre Vy
+'
+#MODE
+AFX=1;'	boucle inclinométrique
+DVX=1;'	boucle tachymétrique
+'
+#INIT_X
+DPX=0
+ACX=10000
+DCX=10000
+SPX=8000*30
+SHX
+WT100
+'
+#INIT_Z
+DPZ=0
+ACZ=10000
+DCZ=10000
+SPZ=60*8000*30/360
+SHZ
+WT100
+'
+PAX=0;BGX
+XQ#TASK1,1
+'
+#LOOP
+	FVX=@AN[5]
+JP#LOOP
+EN
+'
+#TASK1
+	PAZ=1000;BGZ
+	AMZ
+'
+	PAZ=-1000;BGZ
+	AMZ
+JP#TASK1
+EN
